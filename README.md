@@ -1,5 +1,7 @@
 # Modular Mojo Syntax-Highlighting
-Syntax highlighting for the Mojo programming language (2023) in Sublime Text. Converted from Mojo's official VSCode syntax https://github.com/modularml/mojo-syntax/blob/main/syntaxes/mojo.syntax.json
+Syntax highlighting for the Mojo programming language (2023) in *Sublime Text*. 
+
+Converted from Mojo's official VSCode syntax https://github.com/modularml/mojo-syntax/blob/main/syntaxes/mojo.syntax.json
 
 ## Install:
 
