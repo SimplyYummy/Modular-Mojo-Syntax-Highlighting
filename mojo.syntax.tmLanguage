@@ -11,7 +11,7 @@
     <key>version</key>
     <string>https://github.com/MagicStack/MagicPython/commit/7d0f2b22a5ad8fccbd7341bc7b7a715169283044</string>
     <key>name</key>
-    <string>MagicPython</string>
+    <string>Mojo</string>
     <key>scopeName</key>
     <string>source.mojo</string>
     <key>patterns</key>
@@ -222,7 +222,7 @@ it's probably control flow like:
             <key>name</key>
             <string>storage.type.class.python</string>
             <key>match</key>
-            <string>\b(?&lt;!\.)(class|struct)\b</string>
+            <string>\b(?&lt;!\.)(class|struct|trait)\b</string>
           </dict>
           <dict>
             <key>match</key>
@@ -1053,6 +1053,10 @@ E.g. "arr[idx](args)"
         <array>
           <dict>
             <key>include</key>
+            <string>#string-mojo-code-block</string>
+          </dict>
+          <dict>
+            <key>include</key>
             <string>#escape-sequence-unicode</string>
           </dict>
           <dict>
@@ -1454,7 +1458,7 @@ E.g. "arr[idx](args)"
             <string>meta.class.python</string>
             <key>begin</key>
             <string>(?x)
-  \s*(class|struct)\s+
+  \s*(class|struct|trait)\s+
     (?=
       [[:alpha:]_]\w* \s* (:|\()
     )
@@ -2831,6 +2835,7 @@ indirectly through syntactic constructs
     __(?:
       all | annotations | bases | builtins | class
       | struct
+      | trait
       | closure | code | debug | defaults | dict | doc | file | func
       | globals | kwdefaults | match_args | members | metaclass | methods
       | module | mro | mro_entries | name | qualname | post_init | self
@@ -2868,7 +2873,7 @@ indirectly through syntactic constructs
         <string>(?x)
   \b(?:
     (
-      and | assert | async | await | break | class | struct | continue | def
+      and | assert | async | await | break | class | struct | trait | continue | def
        | fn
       | del | elif | else | except | finally | for | from | global
       | if | in | is | (?&lt;=\.)lambda | lambda(?=\s*[\.=])
@@ -6003,6 +6008,45 @@ indirectly through syntactic constructs
           <dict>
             <key>include</key>
             <string>#string-unicode-guts</string>
+          </dict>
+        </array>
+      </dict>
+      <key>string-mojo-code-block</key>
+      <dict>
+        <key>name</key>
+        <string>meta.embedded.block.mojo</string>
+        <key>begin</key>
+        <string>^(\s*\`{3,})(mojo)$</string>
+        <key>end</key>
+        <string>^(\1)$</string>
+        <key>contentName</key>
+        <string>source.mojo</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.single.python</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.single.python</string>
+          </dict>
+        </dict>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.single.python</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>source.mojo</string>
           </dict>
         </array>
       </dict>
