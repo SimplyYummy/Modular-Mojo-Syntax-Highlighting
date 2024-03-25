@@ -10,4 +10,4 @@ Syntax highlighting for the Mojo programming language (2023) is now available in
 4. Enjoy
 
 ## Updates:
-- Updated for 0.6.0 release which includes traits
+- Updated for 24.1 release
