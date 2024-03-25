@@ -170,7 +170,7 @@
             <key>name</key>
             <string>storage.type.function.python</string>
             <key>match</key>
-            <string>\b((async\s+)?\s*def)\b</string>
+            <string>\b((async\s+)?\s*(def|fn))\b</string>
           </dict>
           <dict>
             <key>name</key>
@@ -268,10 +268,6 @@ it's probably control flow like:
           <dict>
             <key>include</key>
             <string>#backticks</string>
-          </dict>
-          <dict>
-            <key>include</key>
-            <string>#illegal-anno</string>
           </dict>
           <dict>
             <key>include</key>
@@ -1770,10 +1766,6 @@ E.g. "arr[idx](args)"
               </dict>
               <dict>
                 <key>include</key>
-                <string>#illegal-anno</string>
-              </dict>
-              <dict>
-                <key>include</key>
                 <string>#lambda-parameter-with-default</string>
               </dict>
               <dict>
@@ -1913,7 +1905,7 @@ correctly identify the "in" as a control flow keyword.
         <array>
           <dict>
             <key>include</key>
-            <string>#raises-modifier</string>
+            <string>#function-modifier</string>
           </dict>
           <dict>
             <key>include</key>
@@ -1959,12 +1951,12 @@ correctly identify the "in" as a control flow keyword.
           </dict>
         </array>
       </dict>
-      <key>raises-modifier</key>
+      <key>function-modifier</key>
       <dict>
         <key>name</key>
         <string>storage.modifier</string>
         <key>match</key>
-        <string>(raises)</string>
+        <string>(raises|capturing)</string>
       </dict>
       <key>parameters</key>
       <dict>
@@ -2873,13 +2865,11 @@ indirectly through syntactic constructs
         <string>(?x)
   \b(?:
     (
-      and | assert | async | await | break | class | struct | trait | continue | def
-       | fn
-      | del | elif | else | except | finally | for | from | global
+      and | assert | async | await | break | class | struct | trait | continue | del | elif | else | except | finally | for | from | global
       | if | in | is | (?&lt;=\.)lambda | lambda(?=\s*[\.=])
       | nonlocal | not | or | pass | raise | return | try | while | with
       | yield
-    ) | (
+    ) | (def | fn | capturing | raises) | (
       as | import
     )
   )\b
@@ -2892,6 +2882,11 @@ indirectly through syntactic constructs
             <string>keyword.control.flow.python</string>
           </dict>
           <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type.function.python</string>
+          </dict>
+          <key>3</key>
           <dict>
             <key>name</key>
             <string>keyword.control.import.python</string>
@@ -2970,13 +2965,6 @@ indirectly through syntactic constructs
         <string>keyword.illegal.name.python</string>
         <key>match</key>
         <string>\b(True|False|None)\b</string>
-      </dict>
-      <key>illegal-anno</key>
-      <dict>
-        <key>name</key>
-        <string>invalid.illegal.annotation.python</string>
-        <key>match</key>
-        <string>-&gt;</string>
       </dict>
       <key>regexp-base-expression</key>
       <dict>
