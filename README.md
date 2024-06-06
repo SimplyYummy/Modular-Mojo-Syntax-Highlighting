@@ -7,7 +7,8 @@ Syntax highlighting for the Mojo programming language (2023) is now available in
 1. Download the `mojo.syntax.tmLanguage` file.
 2. Drag and drop in `~/Library/Application Support/Sublime Text/Packages/`
 3. Open Sublime Text and goto `view` -> `syntax` -> `Mojo`
-4. Enjoy
+4. Then do `View` -> `Syntax` -> **Open all with current extensions as** … -> `Mojo`
+5. Enjoy
 
 ## Updates:
 - Updated for 24.1 release
